@@ -40,7 +40,7 @@ class CastCompatASTTransformation extends AbstractASTTransformation {
             Expression transform(Expression expr) {
                 if (expr instanceof CastExpression) {
                     def name = expr.type.name
-                    if (name.charAt(0).isLowerCase() && !name.contains('.')) {
+                    if (name.charAt(0).isLowerCase() && !name.contains('.') && name != 'int') {
                         def next = expr.expression
                         if (next instanceof ConstantExpression) {
                             def val = next.value
